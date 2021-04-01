@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+        body { 
+            -ms-user-select: none; 
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .header {
+            margin-top: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header span {
+            background-image: url(./minesweeper.gif);
+            width: 13px;
+            height: 23px;
+            float: left;
+        }
+        .header span.t0 { background-position: 0 0; }
+        .header span.t1 { background-position: -13px 0; }
+        .header span.t2 { background-position: -26px 0; }
+        .header span.t3 { background-position: -39px 0; }
+        .header span.t4 { background-position: -52px 0; }
+        .header span.t5 { background-position: -65px 0; }
+        .header span.t6 { background-position: -78px 0; }
+        .header span.t7 { background-position: -91px 0; }
+        .header span.t8 { background-position: -104px 0; }
+        .header span.t9 { background-position: -117px 0; }
+        .header span.t- { background-position: -130px 0; }
+        .header span#smile { width: 26px; height: 26px; }
+        .header span#smile.ready { background-position: 0 -55px; }
+        .header span#smile.press { background-position: -26px -55px; }
+        .header span#smile.oh { background-position: -52px -55px; }
+        .header span#smile.fail { background-position: -78px -55px; }
+        .header span#smile.success { background-position: -104px -55px; }
+        div#result { margin: 10px 0; }
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        .game {
+            display: inline-block;
+            /* width: 180px; 10 + 16 + 10 */
+        }
+        .game li.contents {
+            background-image: url();
+            background-color: silver;
+            height: 32px;
+        }
+        .game li {
+            background-image: url(./minesweeper.gif);
+            float: left;
+        }
+        .game li.top_left {
+            background-position: 0 -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.hor_bar {
+            background-position: -40px -81px;
+            width: 16px;
+            height: 10px;
+        }
+        .game li.top_right {
+            background-position: -10px -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.top_longbar {
+            background-position: -134px -39px;
+            width: 10px;
+            height: 32px;
+        }
+        .game li.mid_left {
+            background-position: -56px -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.mid_right {
+            background-position: -66px -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.ver_bar {
+            background-position: -134px -39px;
+            width: 10px;
+            height: 16px;
+        }
+        .game li.ready {
+            background-position: 0 -39px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.bot_left {
+            background-position: -20px -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.bot_right {
+            background-position: -30px -81px;
+            width: 10px;
+            height: 10px;
+        }
+        .game li.open {
+            background-position: 0 -23px;
+            background-color: #fff;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.question {
+            background-position: -80px -39px;
+            background-color: #0000ff;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.bomb {
+            background-position: -64px -39px;
+            background-color: #ff0000;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.bombdeath {
+            background-position: -32px -39px;
+            background-color: #ff0000;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.bombfail {
+            background-position: -48px -39px;
+            background-color: #ff0000;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.mine {
+            background-position: -16px -39px;
+            background-color: #00aa00;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.blue {
+            background-position: -16px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.green {
+            background-position: -32px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.red {
+            background-position: -48px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.darkblue {
+            background-position: -64px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.darkred {
+            background-position: -80px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.darkcyan {
+            background-position: -96px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.black {
+            background-position: -112px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game li.gray {
+            background-position: -128px -23px;
+            width: 16px;
+            height: 16px;
+        }
+        .game #timer { height: 23px; }
+        .game #remain { height: 23px; }
+    </style>
+</head>
+<body>
+    <h1>Minesweeper</h1>
+    Width <input type="number" value="30" id="hor" placeholder="가로" style="width:50px;"><p></p>
+    Height <input type="number" value="16" id="ver" placeholder="세로" style="width:50px;"><p></p>
+    Mines <input type="number" value="99" id="mine" placeholder="지뢰" style="width:50px;"><p></p>
+    <p></p>
+    <ul class="game"></ul>
+    <div id="result"></div>
+    <script src="./minesweeper.js"></script>
+    <script>
+    let game = new Minesweeper();
+    </script>
+</body>
+</html>
+    
