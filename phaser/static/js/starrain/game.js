@@ -14,7 +14,7 @@ class Game extends Phaser.Scene {
         // 각 이미지 별 변수로 선언
         this.load.image('sky', 'static/images/star/sky.png'); // 800x600
         this.load.image('bomb', 'static/images/star/bomb.png'); // 14x14
-        this.load.image('bombs', 'static/images/star/bombs.png'); // 14x14
+        this.load.image('bombs', 'static/images/star/bombaction.png'); // 14x14
         this.load.image('star', 'static/images/star/star.png'); // 24x22
         // 🚴‍♀️🏃‍♀️💎❤❤🧡💛💛💚💙💜💜🤎🖤
         // this.load.text('dia', '💎');
